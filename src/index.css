@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.full_height {
+  height: 100vh;
+}
+
+.custom_sidebar {
+  width: 280px;
+  height: 100vh;
+}
+
+.custom_body {
+  width: calc(100% - 280px);
+}
+

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import LoginBg from "../assets/images/login_bg.png";
 
 export default function BusinessRegistration() {
 	return (
@@ -80,7 +81,11 @@ export default function BusinessRegistration() {
 						</div>
 					</div>
 				</div>
-				<div className="col"></div>
+				<div className="col">
+          <div className="h-100 d-flex justify-content-center align-items-center">
+            <img src={LoginBg} height="500" />
+          </div>
+        </div>
 			</div>
 		</div>
 	);

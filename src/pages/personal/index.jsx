@@ -1,13 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
-import DashboardLayout from '../../components/DashboardLayout';
+import Layout from '../../components/Layout';
 import PersonalHome from './Home';
 
 export default function PersonalDashboard() {
 	return (
-		<DashboardLayout>
+		<Layout presentLocation="/personal">
 			<Routes>
 				<Route path="/dashboard" element={<PersonalHome />} />
 			</Routes>
-		</DashboardLayout>
+		</Layout>
 	);
 }

@@ -1,6 +1,8 @@
 import React from 'react'
+import DashboardNav from './DashboardNav'
+import { Link } from "react-router-dom";
 
-export default function Layout() {
+export default function Layout({ children, presentLocation }) {
   return (
     <div className="d-flex">
       <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-primary custom_sidebar">
@@ -9,18 +11,22 @@ export default function Layout() {
         </a>
         <hr />
         <ul className="nav nav-pills flex-column mb-auto">
-          <li className="nav-item">
-            <a href="#" className="nav-link my-2 active" aria-current="page">
-              <i class="bi bi-grid me-3" />
-              Dashboard
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link my-2 text-white">
-              <i class="bi bi-wallet me-3" />
-              Wallet
-            </a>
-          </li>
+          <Link to={`${presentLocation}/dashboard`} className="text-decoration-none">
+            <li className="nav-item">
+              <a href={`${presentLocation}/dashboard`} className="nav-link my-2 active" aria-current="page">
+                <i class="bi bi-grid me-3" />
+                Dashboard
+              </a>
+            </li>
+          </Link>
+          <Link to={`${presentLocation}/wallet`} className="text-decoration-none">
+            <li>
+              <a href={`${presentLocation}/wallet`} className="nav-link my-2 text-white">
+                <i class="bi bi-wallet me-3" />
+                Wallet
+              </a>
+            </li>
+          </Link>
           <li>
             <a href="#" className="nav-link my-2 text-white">
               <i class="bi bi-credit-card me-3" />
@@ -62,7 +68,7 @@ export default function Layout() {
         </div>
       </div>
       <div className="custom_body">
-        Hello
+        {children}
       </div>
     </div>
   )

@@ -1,14 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
-import DashboardLayout from '../../components/DashboardLayout';
+import Layout from '../../components/Layout';
 import BusinessHome from './Home';
+import BusinessWallet from './Wallet';
 
 
 export default function BusinessDashboard() {
   return (
-    <DashboardLayout>
+    <Layout presentLocation="/business">
       <Routes>
         <Route path="/dashboard" element={<BusinessHome />} />
+        <Route path="/wallet" element={<BusinessWallet />} />
       </Routes>
-    </DashboardLayout>
+    </Layout>
   )
 }

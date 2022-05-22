@@ -33,7 +33,7 @@ body {
 
 .hero_img {
   position: relative;
-  animation: moveUpAndDown 2s ease alternate infinite;
+  animation: moveUpAndDown 2.5s ease alternate infinite;
 }
 
 @keyframes moveUpAndDown {

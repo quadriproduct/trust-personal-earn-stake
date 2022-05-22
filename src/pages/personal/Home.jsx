@@ -1,5 +1,4 @@
 import PersonalNav from '../../components/PersonalNav';
-import HelpLogo from "../../assets/images/help.png";
 import AssetTable from '../../components/AssetTable';
 import IncomeTable from '../../components/IncomeTable';
 
@@ -23,7 +22,7 @@ export default function PersonalHome() {
               <div className="col">
                 <div class="card border-0 card_shadow">
                   <div class="card-body p-4 text-dark">
-                    <div className="mb-3">Your Tax  <span className="ms-3 text-info"><i class="bi bi-caret-down-fill"></i></span></div>
+                    <div className="mb-3">Your Returns  <span className="ms-3 text-info"><i class="bi bi-caret-down-fill"></i></span></div>
                     <p className="mb-0 text-primary"><i class="bi bi-arrow-up-right"></i> +2.75%</p>
                     <p className="h3 fw-normal mt-2 mb-2">$2,500</p>
                   </div>

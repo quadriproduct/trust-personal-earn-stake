@@ -1,6 +1,6 @@
 import CoinbaseLogo from '../../assets/images/coinbase_logo.png';
 import MetamaskLogo from '../../assets/images/metamask_logo.png';
-import GnosisLogo from '../../assets/images/gnosis_logo.png';
+import GnosisLogo from '../../assets/images/gnosisW_logo.png';
 import PhantomLogo from '../../assets/images/phantom_logo.png';
 import TransakLogo from '../../assets/images/transak.png';
 

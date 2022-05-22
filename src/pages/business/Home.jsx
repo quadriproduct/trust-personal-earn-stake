@@ -1,12 +1,12 @@
 import React from 'react';
-import DashboardNav from '../../components/DashboardNav';
+import BusinessNav from '../../components/BusinessNav';
 import HelpLogo from "../../assets/images/help.png";
 import AnnouncementLogo from "../../assets/images/announcement.png";
 
 export default function BusinessHome() {
 	return (
     <>
-      <DashboardNav />
+      <BusinessNav />
       <section className="m-4">
         <div class="row">
           <div class="col-8">

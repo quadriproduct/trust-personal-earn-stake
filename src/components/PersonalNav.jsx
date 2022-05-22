@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-export default function DashboardNav() {
+export default function PersonalNav() {
 	return (
 		<nav class="navbar navbar-expand-lg bg-white">
 			<div class="container-fluid">
@@ -9,34 +9,19 @@ export default function DashboardNav() {
 					<ul class="navbar-nav">
 						<li class="nav-item">
 							<a class="nav-link fw-semibold" aria-current="page" href="#">
-								Send Mass Payment
+								Add Wallet
 							</a>
 						</li>
 						<Link to="/" className="text-decoration-none">
 							<li class="nav-item">
 								<a class="nav-link fw-semibold">
-									Money In
+									Add Income
 								</a>
 							</li>
 						</Link>
 						<li class="nav-item">
 							<a class="nav-link fw-semibold">
-								Money Out
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link fw-semibold" href="#">
-								Invoicing
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link fw-semibold" href="#">
-								Transaction
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link fw-semibold" href="#">
-								Taxes
+								Pay or Request
 							</a>
 						</li>
 					</ul>

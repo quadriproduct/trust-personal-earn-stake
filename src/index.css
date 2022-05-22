@@ -21,3 +21,12 @@ body {
 .card_shadow {
   box-shadow: 0 0.5rem 1rem #99999930;
 }
+
+.table_head th {
+  color: #5e8cce;
+  font-weight: 600;
+}
+
+.table_item td {
+  color: #5e8cce;
+}

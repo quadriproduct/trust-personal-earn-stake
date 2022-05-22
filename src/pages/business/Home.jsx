@@ -29,11 +29,8 @@ export default function BusinessHome() {
                   <div class="card-body p-4 text-dark">
                     <div>Money In</div>
                     <p className="h3 fw-normal mt-2 mb-4">$20,000</p>
-                    <div className="d-flex justify-content-between">
-                      <button type="button" className="btn btn-primary px-3 text-white">
-                        Request Money
-                      </button>
-                      <button type="button" className="btn btn-primary px-3 text-white">
+                    <div className="d-flex justify-content-between gap-3">
+                      <button type="button" className="btn btn-primary px-3 text-nowrap text-white">
                         View Transactions
                       </button>
                     </div>
@@ -49,9 +46,6 @@ export default function BusinessHome() {
                 <p className="h3 fw-normal mt-2 mb-4">$15,000</p>
                 <div className="d-flex justify-content-between">
                   <button type="button" className="btn btn-primary text-white">
-                    Add Money
-                  </button>
-                  <button type="button" className="btn btn-primary text-white">
                     View Transactions
                   </button>
                 </div>
@@ -66,7 +60,7 @@ export default function BusinessHome() {
               <div class="card-body">
                 <div className="row">
                   <div className="col-8">
-                    <p>Send Money</p>
+                    <p>Create Payment Plan</p>
                     <div>
                       <div class="mb-3 row">
                         <label for="staticEmail" class="col-sm-4 col-form-label">Recepient 1</label>
@@ -77,7 +71,7 @@ export default function BusinessHome() {
                       <div class="mb-3 row">
                         <label for="inputPassword" class="col-sm-4 col-form-label">Recepient 2</label>
                         <div class="col-sm-8">
-                          <input type="password" class="form-control" id="inputPassword" placeholder="Add wallet address, email, mobile number" />
+                          <input type="text" class="form-control" id="inputPassword" placeholder="Add wallet address, email, mobile number" />
                         </div>
                       </div>
                     </div>
@@ -157,43 +151,25 @@ export default function BusinessHome() {
             <div class="card border-0 card_shadow">
               <div class="card-body">
                 <div className="row">
-                  <p>Create an Invoice</p>
+                  <p>Manage Payment Plan</p>
                   <div className="col-2"></div>
                   <div className="col-6">
                     <div>
                       <div class="mb-3 row">
-                        <div class="">
-                          <input type="text" class="form-control" id="invoiceName" placeholder="Customer wallet address, email, mobile number" />
-                        </div>
+                        <input type="text" class="form-control" id="invoiceName" placeholder="Customer wallet address" />
                       </div>
                       <div class="mb-3 row">
-                        <div class="">
-                          <textarea type="text" class="form-control" id="inputPassword" placeholder="Item description" />
-                        </div>
+                        <input type="text" class="form-control" id="invoiceName" placeholder="Customer wallet address" />
                       </div>
                     </div>
                     <div className="mx-auto">
                       <div className="d-flex justify-content-between">
                         <button type="button" className="btn btn-primary px-5 text-white ms-auto">
-                          Send
+                          Remove
                         </button>
                         <button type="button" className="btn btn-primary px-3 text-white ms-4">
-                          More Details
+                          Update
                         </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-4">
-                    <div className="">
-                      <div className="mb-3 row">
-                        <div className="col-8">
-                          <input type="text"  class="form-control text-center" id="recepientOneAmount" placeholder="Item Amount" />
-                        </div>
-                      </div>
-                      <div class="mb-3 row">
-                        <div className="col-8">
-                          <input type="text"  class="form-control text-center" id="recepientTwoAmount" placeholder="Currency" />
-                        </div>
                       </div>
                     </div>
                   </div>

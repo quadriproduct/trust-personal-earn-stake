@@ -1,7 +1,5 @@
-import React from 'react';
 import PersonalNav from '../../components/PersonalNav';
 import HelpLogo from "../../assets/images/help.png";
-import AnnouncementLogo from "../../assets/images/announcement.png";
 import AssetTable from '../../components/AssetTable';
 import IncomeTable from '../../components/IncomeTable';
 
@@ -57,18 +55,29 @@ export default function PersonalHome() {
             <div class="card border-0 card_shadow h-100">
               <div class="card-body p-4 text-dark">
                 <div>Create or Edit Income Yield</div>
-                <div className="d-flex flex-column mb-5">
-                  <button type="button" class="btn btn-outline-primary mt-3 mb-3">Select wallet or income stream source</button>
-                  <button type="button" class="btn btn-outline-primary mb-3">Select yield protocol: Aave, APWINE</button>
-                  <button type="button" class="btn btn-outline-primary mb-3">%Allocation</button>
-                  <button type="button" class="btn btn-outline-primary mb-3">Currency: USDC, DAI, USDT</button>
+                <div className="d-flex flex-column gap-3">
+                  <input type="text" className="form-control border border-2 border-primary" id="selectWallet" placeholder="Select wallet or income stream source" />
+                  <input type="text" className="form-control border border-2 border-primary" id="selectProtocol" placeholder="Select yield protocol: Aave, APWINE" />
+                  <div className="d-flex gap-4 justify-content-between">
+                    <input type="text" className="form-control border border-2 border-primary" id="selectProtocol" placeholder="%Allocation" />
+                    <select className="form-select border border-2 border-primary" aria-label="Default select example">
+                      <option selected>Frequency  Daily</option>
+                      <option value="1">Weekly</option>
+                      <option value="2">Monthly</option>
+                      <option value="3">Annually</option>
+                    </select>
+                  </div>
+                  <input type="text" className="form-control border border-2 border-primary" id="selectProtocol" placeholder="Currency: USDC, DAI, USDT" />
                 </div>
-                <div className="d-flex flex-column mx-auto w-75">
+                <div className="d-flex flex-column mx-auto w-75 gap-2 mt-4">
                   <button type="button" className="btn btn-primary px-3 text-white">
-                    Submit
+                    Start
                   </button>
-                  <button type="button" className="btn btn-primary px-3 text-white mt-3">
-                    More Details
+                  <button type="button" className="btn btn-primary px-3 text-white">
+                    Update
+                  </button>
+                  <button type="button" className="btn btn-primary px-3 text-white">
+                    Pause
                   </button>
                 </div>
               </div>
@@ -93,9 +102,22 @@ export default function PersonalHome() {
           <div className="col-4">
             <div className="card border-0 h-100">
               <div className="card-body card_shadow">
-                <p>Help Center</p>
-                <div className="d-flex justify-content-center">
-                  <img src={HelpLogo} width={250} />
+                <p>Loan Market</p>
+                <div className="d-flex justify-content-between align-items-center mb-3">
+                  <p className="mb-0">Open Loan Position</p>
+                  <button type="button" className="btn btn-primary px-3 text-white">
+                    Buy Stream
+                  </button>
+                </div>
+                <p className="text-primary">15</p>
+                <hr />
+                <div className="d-flex justify-content-between">
+                  <button type="button" className="btn btn-primary px-3 text-white">
+                    Sell Stream
+                  </button>
+                  <button type="button" className="btn btn-primary px-3 text-white">
+                    Stop Stream
+                  </button>
                 </div>
               </div>
             </div>

@@ -6,25 +6,40 @@ export default function BusinessRegistration() {
 		<div className="container-fluid h-100">
 			<div className="row bg-primary full_height">
 				<div className="col bg-white rounded-end justify-content-center d-flex align-items-center">
-					<div className="py-5 my-5 w-75">
+					<div className="my-5 w-75">
 						<div className="mx-5 px-5">
 							<h3 className="display-5 fw-bold">Sign Up to get started</h3>
-							<div className="mt-4">
+							<div className="mt-2">
 								<p>Enter your details to proceed further</p>
 							</div>
-              <div className="mt-5">
+              <div className="mt-3">
                 <div>
-                  <label for="fullName" className="form-label fw-semibold">Full Name</label>
+                  <label for="fullName" className="form-label fw-semibold">Company Name</label>
+                  <div className="input-group mb-3">
+                    <input
+                      type="text"
+                      id="companyName"
+                      className="form-control rounded-0 border-top-0 border-start-0 border-end-0"
+                      placeholder="eg. John Smith Industries"
+                      aria-label="Enter Company Name"
+                    />
+                    <span className="input-group-text rounded-0 bg-white border border-top-0 border-end-0 border-start-0" id="basic-addon2">
+                    <i className="bi-building"></i>
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  <label for="fullName" className="form-label fw-semibold">Role</label>
                   <div className="input-group mb-3">
                     <input
                       type="text"
                       id="fullName"
                       className="form-control rounded-0 border-top-0 border-start-0 border-end-0"
-                      placeholder="eg. John Smith"
-                      aria-label="Enter email"
+                      placeholder="eg. Managing Director"
+                      aria-label="Enter role"
                     />
                     <span className="input-group-text rounded-0 bg-white border border-top-0 border-end-0 border-start-0" id="basic-addon2">
-                    <i className="bi-person"></i>
+                    <i className="bi-file-earmark-person"></i>
                     </span>
                   </div>
                 </div>

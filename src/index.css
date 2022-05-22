@@ -30,3 +30,19 @@ body {
 .table_item td {
   color: #5e8cce;
 }
+
+.hero_img {
+  position: relative;
+  animation: moveUpAndDown 2s ease alternate infinite;
+}
+
+@keyframes moveUpAndDown {
+  from {
+    left: 0px;
+    top: 0px;
+  }
+  to {
+    left: 0px;
+    top: 30px;
+  }
+}

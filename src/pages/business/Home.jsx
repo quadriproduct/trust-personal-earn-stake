@@ -1,9 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import BusinessNav from '../../components/BusinessNav';
 import HelpLogo from "../../assets/images/help.png";
 import AnnouncementLogo from "../../assets/images/announcement.png";
+import TrustCFA from "../../utils/TrustCFA.json";
+import TrustIDA from "../../utils/TrustIDA.json";
+import NativeCompany from "../../utils/NativeCompany.json";
+import { ethers } from "ethers";
 
 export default function BusinessHome() {
+
+  useEffect(() => {
+    try {
+      const { ethereum } = window;
+      
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        const contract = new ethers.Contract("0xd52933974CBE18593c51334A0F9f38624A3E44b9", TrustCFA.abi, signer);
+        console.log("contract", contract)
+      }
+    } catch(e) {console.error(e)}
+  }, [])
+  
+
 	return (
     <>
       <BusinessNav />

@@ -1,0 +1,19 @@
+{
+  "80001": {
+    "DepositKeeper": [
+      "0x1BCdbbe692741685ff29d1e954DC3BC0CeEa3C66"
+    ],
+    "NativeCompany": [
+      "0xCc3079E026F6325De3499556de31E86466c987d8"
+    ],
+    "StreamMarket": [
+      "0xE8973d629Fd15A408FF0F6550d995B89d3E454be"
+    ],
+    "TrustCFA": [
+      "0xd52933974CBE18593c51334A0F9f38624A3E44b9"
+    ],
+    "TrustIDA": [
+      "0x110792BF2F5C3451dC5fd40C882D7579d667ba3C"
+    ]
+  }
+}

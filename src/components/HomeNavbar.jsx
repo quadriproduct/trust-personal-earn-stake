@@ -1,6 +1,6 @@
 import Logo from "../assets/logo.png"
 
-export default function HomeNavbar() {
+export default function HomeNavbar({ showConnectWallet, connectWallet, currentAccount }) {
 	return (
 		<nav className="navbar bg-white">
 			<div className="container-fluid">
@@ -9,8 +9,9 @@ export default function HomeNavbar() {
 				</a>
 				<div className="d-flex">
           <div className="d-flex align-items-center">
-            <p className="me-3">Login</p>
-            <p className="me-3">Sign Up</p>
+						{
+							!showConnectWallet && <button className="btn btn-primary" disabled={currentAccount} onClick={connectWallet}>Connect Wallet</button>
+						}
           </div>
         </div>
 			</div>

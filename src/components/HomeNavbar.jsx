@@ -1,6 +1,8 @@
+import { useCallback, useState } from "react";
 import Logo from "../assets/logo.png"
+import { useWallet } from "../store";
 
-export default function HomeNavbar() {
+export default function HomeNavbar({ currentAccount }) {
 	return (
 		<nav className="navbar bg-white">
 			<div className="container-fluid">
@@ -9,8 +11,9 @@ export default function HomeNavbar() {
 				</a>
 				<div className="d-flex">
           <div className="d-flex align-items-center">
-            <p className="me-3">Login</p>
-            <p className="me-3">Sign Up</p>
+						{
+							currentAccount ? <button className="btn btn-success">Connected</button> : <button className="btn btn-secondary">Not Connected</button>
+						}
           </div>
         </div>
 			</div>

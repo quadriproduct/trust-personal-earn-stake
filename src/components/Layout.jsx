@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import Logo from "../assets/logo.png"
+import { ethers } from "ethers";
+import React, { useEffect, useState, useCallback } from "react";
 
 export default function Layout({ children, presentLocation }) {
   return (

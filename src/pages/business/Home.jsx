@@ -6,11 +6,9 @@ import TrustCFA from '../../utils/TrustCFA.json';
 import { ethers } from 'ethers';
 import { useForm } from 'react-hook-form';
 import useWalletCheck from '../../hooks/useWalletCheck';
+import ContractAddresses from "../../utils/contractAddresses.json";
 
 export default function BusinessHome() {
-	
-	let contract;
-
   const [numberOfEmployees, setNumberOfEmployees] = useState(null);
   const [moneyIn, setMoneyIn] = useState(null);
 
@@ -24,7 +22,7 @@ export default function BusinessHome() {
 				const provider = new ethers.providers.Web3Provider(ethereum);
 				const signer = provider.getSigner();
 				const _contract = new ethers.Contract(
-					'0xd52933974CBE18593c51334A0F9f38624A3E44b9',
+					ContractAddresses[80001].TrustCFA[0],
 					TrustCFA.abi,
 					signer
 				);
@@ -36,20 +34,32 @@ export default function BusinessHome() {
 	}, []);
 
   useEffect(() => {
+		if (!walletAddress) return;
     const getTotal = async () => {
-      if (contract) {
-        try {
-          const totalCompanyEmployees = await contract.getTotalCompanyEmployees(walletAddress);
+			try {
+				const { ethereum } = window;
+	
+				if (ethereum) {
+					const provider = new ethers.providers.Web3Provider(ethereum);
+					const signer = provider.getSigner();
+					const contract = new ethers.Contract(
+						ContractAddresses[80001].TrustCFA[0],
+						TrustCFA.abi,
+						signer
+					);
+					const totalCompanyEmployees = await contract.getTotalCompanyEmployees(walletAddress);
           const totalPaying = await contract.getTotalPaying(walletAddress);
+					console.log('totalCompanyEmployees :>> ', totalCompanyEmployees);
+					console.log('totalPaying :>> ', totalPaying);
           setNumberOfEmployees(Number(totalCompanyEmployees));
           setMoneyIn(Number(totalPaying));
-        } catch(e) {
-          console.error(e);
-        }
-      }
+				}
+			} catch (e) {
+				console.error(e);
+			}
     }
     getTotal();
-  }, []);
+  }, [walletAddress]);
 
 	const { register, handleSubmit } = useForm();
 
@@ -63,9 +73,21 @@ export default function BusinessHome() {
 	const submitForm = async ({ employeeAddress, interval, salary }) => {
     const amount = Number(salary * 10**18);
     const _interval = convertIntervalToInt(interval);
-    try {
-      const response = await contract._addemployee(employeeAddress, BigInt(amount), _interval);
-      console.log("Add Employee ==>", response);
+		try {
+			const { ethereum } = window;
+
+			if (ethereum) {
+				const provider = new ethers.providers.Web3Provider(ethereum);
+				const signer = provider.getSigner();
+				const _contract = new ethers.Contract(
+					ContractAddresses[80001].TrustCFA[0],
+					TrustCFA.abi,
+					signer
+				);
+				const response = await _contract._addemployee(employeeAddress, BigInt(amount), _interval);
+				console.log("Add Employee ==>", response);
+				alert("Employee created successfully");
+			}
 		} catch (e) {
 			console.error(e);
 		}
@@ -82,7 +104,7 @@ export default function BusinessHome() {
 								<div class="card border-0 card_shadow bg-primary">
 									<div class="card-body p-4 text-white">
 										<div>Account Balance</div>
-										<p className="h3 fw-normal mt-2 mb-4">$1,000,000</p>
+										<p className="h3 fw-normal mt-2 mb-4">${moneyIn}</p>
 										<div>
 											<button type="button" className="btn btn-light px-4 text-primary">
 												Add Money

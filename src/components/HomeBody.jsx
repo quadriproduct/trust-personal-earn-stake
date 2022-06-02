@@ -1,14 +1,8 @@
 import Hero from "../assets/images/hero.png";
 // import Hero from "../assets/images/ethereum-logo-home.png";
 import { Link } from "react-router-dom";
-import { useWallet } from "../store";
 
-export default function ({ userConnectWallet, currentAccount }) {
-
-  const wallet = useWallet(state => state.wallet);
-
-  console.log(wallet);
-
+export default function HomeBody ({ handleWalletConnect }) {
   return (
     <div className="container col-xxl-8 px-4 py-5">
     <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
@@ -20,17 +14,16 @@ export default function ({ userConnectWallet, currentAccount }) {
         <p className="fs-5">Real-time Investing and Payment for Businesses and Employees</p>
         <p className="fs-5">Sign up and join the new world of finance</p>
         <div className="d-grid gap-2 d-md-flex justify-content-md-start mt-5">
-          <Link to="/business/dashboard">
+          <button type="button" className="btn btn-primary btn-lg px-4 me-md-2" onClick={() => handleWalletConnect("business")}>Business</button>
+          <button type="button" className="btn btn-primary btn-lg px-4" onClick={() => handleWalletConnect("personal")}>Personal</button>
+          {/* <Link to="/business/dashboard">
             <button type="button" className="btn btn-primary btn-lg px-4 me-md-2">Business</button>
           </Link>
           <Link to="/personal/dashboard">
             <button type="button" className="btn btn-primary btn-lg px-4">Personal</button>
-          </Link>
+          </Link> */}
         </div>
       </div>
-      {
-        !userConnectWallet && !currentAccount && <p className="mt-5 text-danger fw-bold">Connect your wallet to get access to the dashboard</p>
-      }
     </div>
   </div>
   )

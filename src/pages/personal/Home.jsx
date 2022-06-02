@@ -1,42 +1,97 @@
 import PersonalNav from '../../components/PersonalNav';
 import AssetTable from '../../components/AssetTable';
 import IncomeTable from '../../components/IncomeTable';
+import { useEffect, useState, useCallback } from 'react';
+import { useWallet } from '../../store';
+import {ethers} from "ethers";
+import TrustCFA from '../../utils/TrustCFA.json';
+import useWalletCheck from '../../hooks/useWalletCheck';
 
 export default function PersonalHome() {
+
+  let contract;
+
+  const [employeeInfo, setEmployeeInfo] = useState({});
+
+  const [ , walletAddress, ] = useWalletCheck();
+
+  useEffect(() => {
+		try {
+			const { ethereum } = window;
+
+			if (ethereum) {
+				const provider = new ethers.providers.Web3Provider(ethereum);
+				const signer = provider.getSigner();
+				const _contract = new ethers.Contract(
+					'0xd52933974CBE18593c51334A0F9f38624A3E44b9',
+					TrustCFA.abi,
+					signer
+				);
+				contract = _contract;
+        console.log("contract", contract)
+			}
+		} catch (e) {
+			console.error(e);
+		}
+	}, []);
+
+  useEffect(() => {
+    if (contract) {
+      const viewEmployeeInfo = async () => {
+        try {
+          const { employer, paymentInterval, salary, startTime } = await contract.viewEmployeeInfo(walletAddress);
+          setEmployeeInfo({
+            employer,
+            paymentInterval,
+            salary,
+            startTime,
+          });
+        } catch (error) {
+          console.error(error);
+        }
+      }
+      viewEmployeeInfo()
+    }
+  }, []);
+
+  const convertGweiToUsd = (amount) => {
+    return amount * 0.00000255;
+  }
+
 	return (
     <>
       <PersonalNav />
       <section className="m-4">
-        <div class="row">
-          <div class="col-8">
+        <div className="row">
+          <div className="col-8">
             <div className="row">
               <div className="col">
-                <div class="card border-0 card_shadow bg-primary">
-                  <div class="card-body p-4 text-white">
+                <div className="card border-0 card_shadow bg-primary">
+                  <div className="card-body p-4 text-white">
                     <div className="mb-3">Total Income Value <span className="ms-3 text-info"><i class="bi bi-caret-down-fill"></i></span></div>
-                    <div><i class="bi bi-arrow-up-right"></i> +3.49%</div>
+                    <div><i className="bi bi-arrow-up-right"></i> +3.49%</div>
                     <p className="h3 fw-normal mt-2 mb-2">$15,000</p>
                   </div>
                 </div>
               </div>
               <div className="col">
-                <div class="card border-0 card_shadow">
-                  <div class="card-body p-4 text-dark">
+                <div className="card border-0 card_shadow">
+                  <div className="card-body p-4 text-dark">
                     <div className="mb-3">Your Returns  <span className="ms-3 text-info"><i class="bi bi-caret-down-fill"></i></span></div>
                     <p className="mb-0 text-primary"><i class="bi bi-arrow-up-right"></i> +2.75%</p>
-                    <p className="h3 fw-normal mt-2 mb-2">$2,500</p>
+                    <p className="h3 fw-normal mt-2 mb-2">${convertGweiToUsd(employeeInfo?.salary)}</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="card border-0 card_shadow mt-4">
-              <div class="card-body">
+            <div className="card border-0 card_shadow mt-4">
+              <div className="card-body">
                 <div className="row">
                   <div className="d-flex">
                     <p>Your Income Source</p>
                     <div className="ms-auto d-flex align-items-center">
-                      <p className="text-primary fw-semibold text-nowrap mb-0">Download Reports <i class="bi bi-download"></i></p>
-                      <select class="form-select ms-4 border-0" aria-label="timeline">
+                      <p className="text-primary fw-semibold text-nowrap mb-0">Download Reports <i className="bi bi-download"></i></p>
+                      <select className="form-select ms-4 border-0" aria-label="timeline">
                         <option selected>Week</option>
                         <option value="month">Month</option>
                         <option value="year">Year</option>

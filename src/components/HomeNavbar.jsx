@@ -1,6 +1,8 @@
+import { useCallback, useState } from "react";
 import Logo from "../assets/logo.png"
+import { useWallet } from "../store";
 
-export default function HomeNavbar({ showConnectWallet, connectWallet, currentAccount }) {
+export default function HomeNavbar({ currentAccount }) {
 	return (
 		<nav className="navbar bg-white">
 			<div className="container-fluid">
@@ -10,7 +12,7 @@ export default function HomeNavbar({ showConnectWallet, connectWallet, currentAc
 				<div className="d-flex">
           <div className="d-flex align-items-center">
 						{
-							!showConnectWallet && <button className="btn btn-primary" disabled={currentAccount} onClick={connectWallet}>Connect Wallet</button>
+							currentAccount ? <button className="btn btn-success">Connected</button> : <button className="btn btn-secondary">Not Connected</button>
 						}
           </div>
         </div>

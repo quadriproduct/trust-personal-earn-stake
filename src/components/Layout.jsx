@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
-import Logo from "../assets/logo.png"
 
 export default function Layout({ children, presentLocation }) {
   return (
     <div className="d-flex">
-      <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-primary custom_sidebar">
+      <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-primary custom_sidebar sticky-top">
         <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
           <span className="fs-4">
             {/* <img src={Logo} width={100} /> */}

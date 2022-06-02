@@ -1,11 +1,11 @@
 import PersonalNav from '../../components/PersonalNav';
 import AssetTable from '../../components/AssetTable';
 import IncomeTable from '../../components/IncomeTable';
-import { useEffect, useState, useCallback } from 'react';
-import { useWallet } from '../../store';
+import { useEffect, useState } from 'react';
 import {ethers} from "ethers";
 import TrustCFA from '../../utils/TrustCFA.json';
 import useWalletCheck from '../../hooks/useWalletCheck';
+import ContractAddresses from "../../utils/contractAddresses.json";
 
 export default function PersonalHome() {
 
@@ -23,7 +23,7 @@ export default function PersonalHome() {
 				const provider = new ethers.providers.Web3Provider(ethereum);
 				const signer = provider.getSigner();
 				const _contract = new ethers.Contract(
-					'0xd52933974CBE18593c51334A0F9f38624A3E44b9',
+					ContractAddresses[80001].TrustCFA[0],
 					TrustCFA.abi,
 					signer
 				);
@@ -55,6 +55,7 @@ export default function PersonalHome() {
   }, []);
 
   const convertGweiToUsd = (amount) => {
+    // return Web3.utils.fromWei(amount);
     return amount * 0.00000255;
   }
 
@@ -70,7 +71,7 @@ export default function PersonalHome() {
                   <div className="card-body p-4 text-white">
                     <div className="mb-3">Total Income Value <span className="ms-3 text-info"><i class="bi bi-caret-down-fill"></i></span></div>
                     <div><i className="bi bi-arrow-up-right"></i> +3.49%</div>
-                    <p className="h3 fw-normal mt-2 mb-2">$15,000</p>
+                    <p className="h3 fw-normal mt-2 mb-2">${convertGweiToUsd(employeeInfo?.salary)}</p>
                   </div>
                 </div>
               </div>

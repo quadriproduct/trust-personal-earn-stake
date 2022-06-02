@@ -8,8 +8,6 @@ export default function BusinessNav() {
 
   const [walletAddress, setWalletAddress] = useWallet(state => [state.walletAddress, state.setWalletAddress]);
 
-	console.log('walletAddress :>> ', walletAddress);
-
   const checkIfWalletIsConnected = useCallback(async () => {
     try {
       const { ethereum } = window;
@@ -27,7 +25,7 @@ export default function BusinessNav() {
         const account = accounts[0];
         console.log("Found an authorized account:", account);
         setCurrentAccount(account);
-        setWalletAddress(address);
+        setWalletAddress(account);
       } else {
         console.log("No authorized account found");
       }

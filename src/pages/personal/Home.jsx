@@ -6,6 +6,7 @@ import {ethers} from "ethers";
 import TrustCFA from '../../utils/TrustCFA.json';
 import useWalletCheck from '../../hooks/useWalletCheck';
 import ContractAddresses from "../../utils/contractAddresses.json";
+import Web3 from 'web3';
 
 export default function PersonalHome() {
 
@@ -55,8 +56,8 @@ export default function PersonalHome() {
   }, []);
 
   const convertGweiToUsd = (amount) => {
-    // return Web3.utils.fromWei(amount);
-    return amount * 0.00000255;
+    return Web3.utils.fromWei(amount);
+    // return amount * 0.00000255;
   }
 
 	return (
